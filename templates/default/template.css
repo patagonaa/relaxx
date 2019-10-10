@@ -155,7 +155,7 @@ div.hbox
     float: left;
    	position:relative;
 	overflow:hidden;
-	width:500px;
+	width:320px;
 	padding: 0px;
     margin:0px;
     height:100%;
@@ -404,13 +404,9 @@ a.player:hover  {
 
 /* Form Fields and Buttons */
 
-#playlistSelect {
-    height: 300px;
-}
-
 form input, select, option {
 	background-color: #272822;
-	width: 370px;	
+	width: 150px;	
 	margin: 0;
 	padding: 2px;
     border: 1px solid black;
@@ -422,7 +418,7 @@ form input, select, option {
 
 select option {
 	background-color: #272822;
-	width: 370px;	
+	width: 150px;	
 	border: 0;
 	padding: 1px;
 	color: #fff;

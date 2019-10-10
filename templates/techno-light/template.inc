@@ -19,7 +19,7 @@
 <link href="./templates/<?php echo $config->template; ?>/styles/table.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="footer"><span><a href='http://relaxx.dirk-hoeschen.de'>relaXX-player</a> <?php echo $config->version; ?> Copyright © 2008 by Dirk Hoeschen. Relaeased under GPL v3.</span></div>
+<div id="footer"><span><a href='http://relaxx.dirk-hoeschen.de'>relaXX-player</a> <?php echo $config->version; ?> &copy; <?php echo date('Y'); ?> by Dirk Hoeschen. Released under GPL v3.</span></div>
 <!-- Container Header with 4 collumns.... menu, player,playersettings, trackinfo and logo /-->
 <div id="cont_top" class="cont_top">
   <div class="pannel"><?php $player->xxMenu('vert'); ?></div>
@@ -40,27 +40,29 @@
                <div style="display:inline;float:left;cursor:pointer;"><img onclick="setCrossfade(true);" src="./templates/<?php echo $config->template; ?>/images/plus.gif" /></div>
              </div>
         </div>                        
-  	    <div style="position:absolute;width:100px;top:34px;left: 6px;cursor:pointer;" >
+  	    <div style="position:absolute;width:100px;top:34px;left:6px;cursor:pointer;" >
   	       <table class='normTable' style="border-spacing:2px;"><tr>
-  	          <td style="width:10px;"><img onclick="handleKeys(null, 'q');" title="<?php echo $lng->volume; ?>"src="./templates/<?php echo $config->template; ?>/images/volume-low.gif" /></td>
+  	          <td style="width:10px;"><img onclick="handleKeys(null, 'q');" title="<?php echo $lng->volume; ?>" src="./templates/<?php echo $config->template; ?>/images/volume-low.gif"></td>
   	          <td style="width:70px;"><?php $player->xxVolumeSlider(); ?></td>
-  	          <td style="width:16px;"><img onclick="handleKeys(null, 'w');" title="<?php echo $lng->volume; ?>" src="./templates/<?php echo $config->template; ?>/images/volume-high.gif" /></td>
+  	          <td style="width:16px;"><img onclick="handleKeys(null, 'w');" title="<?php echo $lng->volume; ?>" src="./templates/<?php echo $config->template; ?>/images/volume-high.gif"></td>
   	       </tr></table>
   	     </div>
   </div>
   <div class="pannel" align="left">
-       <div style="width:253px;margin-top:7px;font-size:11px;">
+       <div style="width:253px;margin-top:6px;font-size:11px;">
          <div style="position:absolute;right:8px;" id='remaining'>00:00</div>
-         <img src="./templates/<?php echo $config->template; ?>/images/info.gif" title="<?php echo $lng->info; ?>" onclick="showStats();" align="absmiddle" hspace="3" style="cursor:pointer" />
+         <img src="./templates/<?php echo $config->template; ?>/images/info.gif" title="<?php echo $lng->info; ?>" onclick="showStats();" align="absmiddle" hspace="1" style="cursor:pointer">
          <?php echo $lng->now_playing; ?>
        </div>         
-       <div style="position:absolute;top:28px;left:8px;width:250px;font-size:0.97em;">
+       <div style="position:absolute;top:26px;left:8px;width:250px;font-size:0.97em;">
          <marquee id='trackinfo' scrollamount='10' scrolldelay='200' direction="left" onmouseover="this.stop();" onmouseout="this.start();"><?php echo $lng->loading; ?></marquee>
        </div>  
   </div>
   <div class="pannel" style="width:5px;" ></div>
-  <div style="float:right;margin-top:3px;margin-right:5px;cursor:pointer;" onclick='aboutRelaxx();'><img src="./templates/<?php echo $config->template; ?>/images/relaxx-logo.gif" /></div>
+  <div style="float:left;display:inline;margin:8px 5px 0;"><button onclick="updateDatabase(); return false;" style='background-image: url(./images/warning.gif);padding: 12px 5px 12px 20px'><?php echo $lng->adm_updatedb; ?></button></div>
+  <div style="float:right;margin-top:3px;margin-right:5px;cursor:pointer;" onclick='aboutRelaxx();'><img src="./templates/<?php echo $config->template; ?>/images/relaxx-logo.png" /></div>
 </div>
+
 <!-- Playlist Container /-->
 <div id="playlist" class="playlist">
 </div>
@@ -84,7 +86,7 @@
 </div>
 <!-- InfoBox (hidden) /-->
   <div id="infobox" class="infobox">
-        <div id="infobox_content" style="width:440px; margin: 15px 10px 10px 20px; overflow: auto; padding: 2px; position: fixed;">...</div> 
+        <div id="infobox_content" style="width:440px; margin: 15px 10px 10px 20px; overflow: auto; padding: 2px; position: fixed;">Loading Javascript ...</div> 
         <button class="buttons" style="position:absolute; top:2px; right:5px; padding: 0 3px 0 3px;" onclick="$('infobox').style.display = 'none';">x</button>
         <button id="infobox_close" class="negative" style="position:absolute; bottom:10px; left:10px;" onclick="$('infobox').style.display = 'none';"><? echo $lng->close ?></button>
   </div>

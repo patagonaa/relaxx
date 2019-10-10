@@ -9,6 +9,7 @@ var dragObject = null;
 var resizeFlag = true;
 
 // Init on load
+// Init on load
 window.addEvent('load', function() {
     /** Reset element positions */
     calcResizeHor();
@@ -21,7 +22,7 @@ window.addEvent('load', function() {
 	$('directory').makeResizable({
 	   modifiers: {x: 'width', y: false},
        limit: {x: [210]},
-       grid: 20,
+       grid: 20,       
        onComplete: function() { if(this.value.begin!=this.value.now.x) { calcResizeHor();  recalcTable('tracklist'); } }, 
        onStart: function() { this.value.begin = this.value.now.x; var el = $('directory').getCoordinates(); if (this.mouse.start.x < (el.right-5)) this.stop(); } 
     });
@@ -44,7 +45,6 @@ window.addEvent('load', function() {
 	nHeight = Math.abs(window.getHeight()*0.3);
 	$('playlist').setStyle('height', nHeight);
 	calcResizer();
-    
 });
 
 // Calculate resize dimensions on load and when windowchanges
@@ -71,6 +71,7 @@ function calcResizeHor() {
    $('tracklist').setStyle('width',Nwidth);  
    // Set playlist width  
    $('playlist').setStyle('width',Wwidth);
+
    
    // Set directory container width for ie6
    if(window.ie6) { 
@@ -90,7 +91,7 @@ function calcResizeVert() {
    mtitles = $$('#dirTabs ul.mootabs_title li');
    mtpanels = $$('#dirTabs .mootabs_panel');
    mtpanels.setStyle('height', (Nheight - mtitles[0].getSize().size.y -12 ));   
-
+   // Set the table body height for firefox
 }
 
 // Reload on resize
@@ -101,3 +102,8 @@ function redraw() {
   }	
 }
 
+// Update
+function updateDatabase(){
+	url="include/controller-mpdadmin.php?action=updateDatabase";
+	new Ajax(url,{method:"get"}).request();
+}

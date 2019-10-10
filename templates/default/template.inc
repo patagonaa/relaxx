@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,11 +12,11 @@
 <script src="js/functions.js"></script>
 <script src="./templates/<?php echo $config->template; ?>/template.js"></script>
 <!-- include styles /-->
-<link href="templates/<?php echo $config->template; ?>/template.css" rel="stylesheet" type="text/css" />
-<link href="templates/<?php echo $config->template; ?>/styles/mootabs.css" rel="stylesheet" type="text/css" />
-<link href="templates/<?php echo $config->template; ?>/styles/treeview.css" rel="stylesheet" type="text/css" />
-<link href="templates/<?php echo $config->template; ?>/styles/menu.css" rel="stylesheet" type="text/css" />
-<link href="templates/<?php echo $config->template; ?>/styles/table.css" rel="stylesheet" type="text/css" />
+<link href="./templates/<?php echo $config->template; ?>/template.css" rel="stylesheet" type="text/css" />
+<link href="./templates/<?php echo $config->template; ?>/styles/mootabs.css" rel="stylesheet" type="text/css" />
+<link href="./templates/<?php echo $config->template; ?>/styles/treeview.css" rel="stylesheet" type="text/css" />
+<link href="./templates/<?php echo $config->template; ?>/styles/menu.css" rel="stylesheet" type="text/css" />
+<link href="./templates/<?php echo $config->template; ?>/styles/table.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="footer"><span><a href='http://relaxx.dirk-hoeschen.de'>relaXX-player</a> <?php echo $config->version; ?> &copy; <?php echo date('Y'); ?> by Dirk Hoeschen. Released under GPL v3.</span></div>
@@ -42,15 +42,15 @@
         </div>                        
   	    <div style="position:absolute;width:100px;top:34px;left:6px;cursor:pointer;" >
   	       <table class='normTable' style="border-spacing:2px;"><tr>
-  	          <td style="width:10px;"><img onclick="handleKeys(null, 'q');" title="<?php echo $lng->volume; ?>"src="./templates/<?php echo $config->template; ?>/images/volume-low.gif"></td>
+  	          <td style="width:10px;"><img onclick="handleKeys(null, 'q');" title="<?php echo $lng->volume; ?>" src="./templates/<?php echo $config->template; ?>/images/volume-low.gif"></td>
   	          <td style="width:70px;"><?php $player->xxVolumeSlider(); ?></td>
   	          <td style="width:16px;"><img onclick="handleKeys(null, 'w');" title="<?php echo $lng->volume; ?>" src="./templates/<?php echo $config->template; ?>/images/volume-high.gif"></td>
   	       </tr></table>
   	     </div>
   </div>
   <div class="pannel" align="left">
-       <div style="width:253px;margin-top:5px;font-size:11px;">
-         <div style="position:absolute;right:8px;background-color: #041936;" id='remaining'>00:00</div>
+       <div style="width:253px;margin-top:6px;font-size:11px;">
+         <div style="position:absolute;right:8px;" id='remaining'>00:00</div>
          <img src="./templates/<?php echo $config->template; ?>/images/info.gif" title="<?php echo $lng->info; ?>" onclick="showStats();" align="absmiddle" hspace="1" style="cursor:pointer">
          <?php echo $lng->now_playing; ?>
        </div>         
@@ -60,13 +60,12 @@
   </div>
   <div class="pannel" style="width:5px;" ></div>
   <div style="float:left;display:inline;margin:8px 5px 0;"><button onclick="updateDatabase(); return false;" style='background-image: url(./images/warning.gif);padding: 12px 5px 12px 20px'><?php echo $lng->adm_updatedb; ?></button></div>
-  <div style="float:right;margin-top:3px;margin-right:5px;cursor:pointer;" onclick='aboutRelaxx();'><img src="./templates/<?php echo $config->template; ?>/images/relaxx-logo.gif"></div>
+  <div style="float:right;margin-top:3px;margin-right:5px;cursor:pointer;" onclick='aboutRelaxx();'><img src="./templates/<?php echo $config->template; ?>/images/relaxx-logo.png" /></div>
 </div>
 
 <!-- Playlist Container /-->
 <div id="playlist" class="playlist">
 </div>
-
 <!-- Container Files with Directory and Filelist /-->
 <div id="cont_bottom" class="cont_bottom">
    <div id="directory" class="directory">
