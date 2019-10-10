@@ -283,7 +283,7 @@ function recalcTable(tblContainer) {
     container.setStyle('height', $(tblContainer).clientHeight);
     table = $$('#'+tblContainer+' table')[0];
     if (window.gecko) {
-       container.setStyle('overflow', 'hidden');
+       container.setStyle('overflow-x', 'hidden');
        table.setStyle('width', newSize.size.x);
        if(table.lastChild.scrollHeight>=(newSize.size.y-20)) {
         	border = (tblContainer == 'playlist') ? 5 : 0;
