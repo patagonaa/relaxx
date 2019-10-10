@@ -33,15 +33,15 @@ class audioplayer {
 				.urlencode($mpath.$filename).'&playerID=audioflash"/>'; 		
 // write the audioplayer flash		
 ?> 		
-	<div style="margin-bottom: 5px;display: block;"><? echo $title ?></div>
+	<div style="margin-bottom: 5px;display: block;"><?php echo $title ?></div>
      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="300" height="24">
-        <param name="movie" value="<? echo $path; ?>plugins/audioplayer/player.swf" />
+        <param name="movie" value="<?php echo $path; ?>plugins/audioplayer/player.swf" />
 		<?php echo $fvars ?>
 		<param name="wmode" value="transparent"/>
 		<param name="menu" value="false"/>
 		<param value="high" name="quality"/>
         <!--[if !IE]>-->
-		<object id="audioflash" width="300" height="24" type="application/x-shockwave-flash" name="audioflash" style="visibility: visible;" data="<? echo $path; ?>/plugins/audioplayer/player.swf">
+		<object id="audioflash" width="300" height="24" type="application/x-shockwave-flash" name="audioflash" style="visibility: visible;" data="<?php echo $path; ?>/plugins/audioplayer/player.swf">
         <!--<![endif]-->
           macromedia flash needed
         <!--[if !IE]>-->

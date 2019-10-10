@@ -88,7 +88,7 @@
   <div id="infobox" class="infobox">
         <div id="infobox_content" style="width:440px; margin: 15px 10px 10px 20px; overflow: auto; padding: 2px; position: fixed;">Loading Javascript ...</div> 
         <button class="buttons" style="position:absolute; top:2px; right:5px; padding: 0 3px 0 3px;" onclick="$('infobox').style.display = 'none';">x</button>
-        <button id="infobox_close" class="negative" style="position:absolute; bottom:10px; left:10px;" onclick="$('infobox').style.display = 'none';"><? echo $lng->close ?></button>
+        <button id="infobox_close" class="negative" style="position:absolute; bottom:10px; left:10px;" onclick="$('infobox').style.display = 'none';"><?php echo $lng->close ?></button>
   </div>
 </body>
 </html>
