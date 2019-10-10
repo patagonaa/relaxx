@@ -545,8 +545,10 @@ function togglePlay() {
 
 // set crossfade value in seconds
 function setCrossfade(increase) {
-	var xfade = (increase) ?  Math.abs(oldStatus.xfade)+1 :  Math.abs(oldStatus.xfade-1);
-	if (xfade>20) xfade=20;
+  if (!oldStatus.xfade) oldStatus.xfade=0;
+	var xfade = (increase) ?  Math.abs(oldStatus.xfade)+1 :  Math.abs(oldStatus.xfade)-1;
+  if (xfade<0) xfade=0;
+  if (xfade>20) xfade=20;
 	controllRemote('setCrossfade',xfade,true,'playback');
 }
 
@@ -731,9 +733,11 @@ function setPlayerStatus(plStatus, reset) {
 	}
 
    // Set cropssfade position
-	if ((plStatus.xfade!=oldStatus.xfade) || (!oldStatus.xfade)) {
-		$('xfade').firstChild.nodeValue = plStatus.xfade;
-	}
+	if (!plStatus.xfade) {
+		$('xfade').firstChild.nodeValue = '-';
+	} else {
+    if (plStatus.xfade!=oldStatus.xfade) $("xfade").firstChild.nodeValue = plStatus.xfade;
+  }
 }
 
 // Login and out
