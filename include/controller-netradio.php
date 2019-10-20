@@ -6,7 +6,6 @@
 /  ---------------------------------------------- */
 
  session_start();
- $_SESSION['relaxx'] = true;
 
  ini_set('default_mimetype','text/javascript');
  header("Content-type: text/javascript; charset=utf-8");

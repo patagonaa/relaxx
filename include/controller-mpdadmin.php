@@ -13,7 +13,7 @@
  require("class-config.php");   
  $config = new config("../config/config.php");
  
- if (isset($_SESSION['relaxx'])) {
+ if (isset($_SESSION['relaxx']) && ($_SESSION['relaxx']==$config->admin_name) && ($_SESSION['relaxx_pass']==$config->admin_pass)) {
      
    // include MPD-lib and connect
    require_once 'lib-mpd.php';
@@ -30,16 +30,16 @@
 			 $status = ($MPD->isCommand('outputs')) ? $MPD->getOutputs() : 'error';
 			 break;
 		case 'disableOutput':
-			($MPD->isCommand('disableoutput')) ? $MPD->disableOutput($_GET['value']) : $status = "error";
+			($config->checkRights("admin_mpd") && $MPD->isCommand('disableoutput')) ? $MPD->disableOutput($_GET['value']) : $status = "error";
 			break;		
 		case 'enableOutput':
-			($MPD->isCommand('enableoutput')) ? $MPD->enableOutput($_GET['value']) : $status = "error";
+			($config->checkRights("admin_mpd") && $MPD->isCommand('enableoutput')) ? $MPD->enableOutput($_GET['value']) : $status = "error";
 			break;		
 		case 'kill':
-			($MPD->isCommand('kill')) ? $MPD->kill() : $status = "error";
+			($config->checkRights("admin_mpd") && $MPD->isCommand('kill')) ? $MPD->kill() : $status = "error";
 			break;		
 		case 'updateDatabase':
-			($MPD->isCommand('update')) ? $MPD->updateDatabase($_GET['value']) : $status = "error";			
+			($config->checkRights("admin_mpd") && $MPD->isCommand('update')) ? $MPD->updateDatabase($_GET['value']) : $status = "error";			
 			break;					
 	}
 	echo json_encode($status);		
