@@ -101,9 +101,3 @@ function redraw() {
   	setTimeout("calcResizer()", 100);
   }	
 }
-
-// Update
-function updateDatabase(){
-	url="include/controller-mpdadmin.php?action=updateDatabase";
-	new Ajax(url,{method:"get"}).request();
-}

@@ -59,7 +59,6 @@
        </div>  
   </div>
   <div class="pannel" style="width:5px;" ></div>
-  <div style="float:left;display:inline;margin:8px 5px 0;"><button onclick="updateDatabase(); return false;" style='background-image: url(./images/warning.gif);padding: 12px 5px 12px 20px'><?php echo $lng->adm_updatedb; ?></button></div>
   <div style="float:right;margin-top:3px;margin-right:5px;cursor:pointer;" onclick='aboutRelaxx();'><img src="./templates/<?php echo $config->template; ?>/images/relaxx-logo.png" /></div>
 </div>
 
