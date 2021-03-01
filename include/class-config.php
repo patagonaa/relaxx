@@ -32,14 +32,14 @@ class config{
    var $trcolumns = "Artist:Title:Genre:Time";
 
    /* save constructor */
-   function config($cfile){
+   function __construct($cfile){
    	  if (!file_exists($cfile)) {
    	  	  $this->save($cfile);
    	  }
    	  $version = $this->version;
    	  $xml = simplexml_load_file($cfile);
    	  $class = get_class_vars("config");
-      while (list($key, $val) = each($class)) {
+      foreach ($class as $key => $val) {
     	  if (is_array($val)) {
     	    foreach ($val as $array_key => $array_val) { $this->{$key}[$array_key] = $xml->$key->$array_key; }
     	  } else if (isset($xml->$key)) { $this->$key=$xml->$key; }
@@ -57,7 +57,7 @@ class config{
    function getPost(){
    	   global $_POST;
        $class = get_class_vars("config");
-  	   while (list($key, $val) = each($class)) {
+  	   foreach ($class as $key => $val) {
   	       if (is_array($val)) {
   	        	/* handle multiple selects */
                foreach ($val as $array_key => $array_val) { $this->{$key}[$array_key] =""; }
@@ -81,7 +81,7 @@ class config{
    	  }
    	  fwrite($handle,"<?xml version='1.0' standalone='yes'?>\n<config>\n");
    	  $class = get_class_vars("config");
-      while (list($key, $val) = each($class)) {
+      foreach ($class as $key => $val) {
     	  if (is_array($val)) {
     	  	fwrite($handle,"<".$key.">\n");
     	  	foreach ($this->$key as $array_key => $array_val) { fwrite($handle,"<".$array_key.">".$array_val."</".$array_key.">\n"); }

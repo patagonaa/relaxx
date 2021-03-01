@@ -11,7 +11,7 @@ class player{
   var $useIcons = true;
 
   // connect to MPD and get rootdir content
-  function player($withIcons=true) {
+  function __construct($withIcons=true) {
 	global $config;
 	($withIcons) ?	$this->imgPath = "templates/".$config->template."/images/" : $this->useIcons = false;
 

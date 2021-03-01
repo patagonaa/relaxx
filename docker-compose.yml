@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  relaxx:
+    image: relaxx
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    volumes:
+      - "relaxx-config:/var/www/html/config/"
+
+volumes:
+  relaxx-config:
