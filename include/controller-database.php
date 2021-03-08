@@ -61,7 +61,7 @@
 			$params = array($_GET['type'] => $_GET['search']);
 			$data = $MPD->find($params);			
 			echo "{";
-			if ($data[0]!="") { echo "file: ".json_encode($data); }
+			if (!empty($data) && $data[0]!="") { echo "file: ".json_encode($data); }
 			echo "}";
  	        die();
 		  }     		

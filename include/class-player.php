@@ -80,7 +80,7 @@ class player{
   	   echo "<form action='#' onsubmit='if (this.search.value!=\"\") refreshTracklist(\"search\",this); return false;' >";
   	   echo "<table class='normTable' style='width:auto'><tr><td>".$lng->search_for."<br />".
   	        "<input id='searchField' name='search' value='' onclick='this.focus();' onkeydown='current_element=\"input\"' /><tr><td>".
-  	         $lng->search_in."<br /><select id='searchTarget' name='target' onmousedown='alert(\"bla\"); return:true;'><option value='any' standard>".$lng->any.
+  	         $lng->search_in."<br /><select id='searchTarget' name='target'><option value='any' selected>".$lng->any.
   	        "<option value='artist'>".$lng->artist.
   	        "<option value='title'>".$lng->title.
   	        "<option value='genre'>".$lng->genre.
