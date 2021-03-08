@@ -1,12 +1,20 @@
 RelaXXPlayer - the easy listening MPD - Web Client
 ==================================================
 
-* [Home](https://github.com/priestjim/relaxx)
+* [Home](https://github.com/patagonaa/relaxx)
 * [Original home](http://relaxx.dirk-hoeschen.de)
 
 Copyright (C) 2010 Dirk Hoeschen
 
-Further modifications by Panagiotis Papadomitsos
+Further modifications by
+- https://github.com/priestjim
+- https://github.com/Hummtaro
+- https://github.com/patagonaa
+
+Disclaimer:
+===========
+
+RelaXXPlayer was developed on PHP 5 some time around 2008. The age really shows and there's probably a lot of places in this thing that can be easily exploited (XSS, plaintext passwords, DoS just to name a few). Use at your own risk and don't put it alongside other websites or files you intend to keep. Especially don't put it on the internet without any authentication.
 
 About MPD and RelaXXPlayer
 ==========================

@@ -149,3 +149,16 @@ This is first and early alpha version so expect bugs and missing features.
 * added support for mms,asx and unknown streams
 * ajaxified update DB
 * cosmetic fixes
+
+## v0.8.0 - Release 08/03/2021
+
+* dug up this old piece of software to resurrect it (for a while at least)
+* PHP 8 support
+* Docker support
+* fix misc JS errors
+* fix misc PHP errors
+* fix table headers with displays larger than 1200px
+* remove debugging alert() in "search in"-field
+* fix adding/deleting playlists and radio streams with special chars (like spaces, &, *, ?)
+* fix playlist list reload after adding/deleting
+* add youtube-dl support to "Append radio stream" context menu entry

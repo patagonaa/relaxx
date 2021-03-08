@@ -5,7 +5,7 @@
 /  -------------------- */
 
 class config{
-   var $version = "0.7.0";
+   var $version = "0.8.0";
    var $admin_name = "admin";
    var $admin_pass = "d41d8cd98f00b204e9800998ecf8427e";
    var $host = "127.0.0.1";
