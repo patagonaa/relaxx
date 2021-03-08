@@ -1,14 +1,15 @@
-Changelog for RelaXXPlayer
-==========================
+RelaXXPlayer - the easy listening MPD - Web Client
+==================================================
 
-This file is used to list changes made in each version of RelaXX
-
-* Home: https://github.com/priestjim/relaxx
-* Original home: http://relaxx.dirk-hoeschen.de
+* [Home](https://github.com/patagonaa/relaxx)
+* [Original home](http://relaxx.dirk-hoeschen.de)
 
 Copyright (C) 2010 Dirk Hoeschen
 
-Further modifications by Panagiotis Papadomitsos
+Further modifications by
+- https://github.com/priestjim
+- https://github.com/Hummtaro
+- https://github.com/patagonaa
 
 ## v0.5a - Released 21/02/2008
 
