@@ -185,7 +185,7 @@ class Net_MPD_Common
         //Loop through the connection, putting the data into $line
         $output = array();
         while (!feof($this->_connection)) {
-            $line = fgets($this->_connection,1024);
+            $line = stream_get_line($this->_connection,1024, "\n");
             if (preg_match('/^ACK \[(.*?)\@(.*?)\] \{(.*?)\} (.*?)$/', $line, $matches)) {            	
                 //If the output is an ACK error
 //                $this->runCommand('clearerror');
@@ -278,8 +278,8 @@ class Net_MPD_Common
                     continue;
                 }
             }
-            $key = trim($parts[0]);
-            $value = trim($parts[1]);
+            $key = $parts[0];
+            $value = $parts[1];
             if ($style == 0) {
                 switch ($key) {
                     //The following has to do strictly

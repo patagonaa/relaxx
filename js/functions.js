@@ -512,18 +512,19 @@ function handleKeys(evt,key){
 function controllRemote(action,value,ping,controller) {
 	clearTimeout(pingTimer); // stop timer	
 	clearTimeout(infoTimer);
-	 url = "include/controller-"+controller+".php?action="+action+"&value=";
-	 // Songnames must not be encoded
-	 url += ('addSong') ? value : encodeURI(value);
-	 var request = new Json.Remote(url, {
-	 	method: 'get', async: 'false',
+	var url = "include/controller-"+controller+".php?action="+action+"&value=";
+	// addSong is always called with row id which is already url encoded
+	url += (action == 'addSong') ? value : encodeURIComponent(value);
+	var request = new Json.Remote(url, {
+		method: 'get',
+		async: false,
 		onComplete: function(jsonObj) {
-		  if (jsonObj=='error') {
-		  	error = (adminName == "anonymous") ? language.error_allowed : language.error_mpd;
-		  	modalBox("<h3>Error</h3><p>"+error+"</p>",true);
-		  } else {
-            if (ping) pingMPD();
-		  }
+			if (jsonObj=='error') {
+				error = (adminName == "anonymous") ? language.error_allowed : language.error_mpd;
+				modalBox("<h3>Error</h3><p>"+error+"</p>",true);
+			} else {
+				if (ping) pingMPD();
+			}
 		}
 	}).send();
 }
