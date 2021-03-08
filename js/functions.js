@@ -640,28 +640,32 @@ function savePlaylist() {;
 
 // Add internet radio Stream to PL as URL
 function addStream() {;
-     // open URL request
-     modalBox("<h1>"+language.dialog_radio+"</h1><br/>" +
-	  		"<form id='addURL' action='index.php' method='get'><table class='normTable' style='width:300px'>" +
-	  		"<tr><th width=50>" +language.url + "<td><input name='stream' value='http://' style='width:300px' onclick='this.focus();' onkeydown='current_element=\"input\"'/>" +
-	  		"<tr><td> <td><div style='text-align:right; font-size:10px'>(pls,m3u,asx,xspf,mp3,ogg,url:port)</div>"+	  		
-	  		"<tr><td> <td><button type='submit' class='positive' />"+language.add+"</button>"+
-	  		"&nbsp;<button type='reset' class='negative' />"+language.cancel+"</button></table></form>",false);
-	 $('addURL').addEvent('submit', function(e) {
-    	     new Event(e).stop();
-   	 	$('infobox').style.display =  'none';
-   	 	if (this.stream.value!="") {   	 		       	 		      
-                  url = 'include/controller-netradio.php?playlist='+escape(this.stream.value);
-                  var request = new Json.Remote(url, {
-                   onComplete: function(jsonObj) {
-		     if (!jsonObj.error) {
-                         controllRemote('addSong',jsonObj.url,true,'playlist');
-                        loadPlaylists();
-                     }
-                   }
-                 }).send();                      
-                }
-	 });
+	// open URL request
+	modalBox("<h1>"+language.dialog_radio+"</h1><br/>" +
+		"<form id='addURL' action='index.php' method='get'><table class='normTable' style='width:300px'>" +
+		"<tr><th width=50>" +language.url + "<td><input name='stream' value='http://' style='width:300px' onclick='this.focus();' onkeydown='current_element=\"input\"'/>" +
+		"<tr><td> <td><div style='text-align:right; font-size:10px'>(pls,m3u,asx,xspf,mp3,ogg,url:port)</div>"+	  		
+		"<tr><td> <td><button type='submit' class='positive' />"+language.add+"</button>"+
+		"&nbsp;<button type='reset' class='negative' />"+language.cancel+"</button></table></form>",false);
+	$('addURL').addEvent('submit', function(e) {
+		new Event(e).stop();
+		$('infobox').style.display =  'none';
+		if (this.stream.value!="") {   	 		       	 		      
+			var url = 'include/controller-netradio.php?playlist='+escape(this.stream.value);
+			var request = new Json.Remote(url, {
+					onComplete: function(jsonObj) {
+					if (!jsonObj.error) {
+						controllRemote('addSong',jsonObj.url,true,'playlist');
+						loadPlaylists();
+					}else{
+						var p = document.createElement('p');
+						p.innerText = jsonObj.error;
+						modalBox("<h3>"+language.error+"</h3>"+p.outerHTML,true);
+					}
+				}
+			}).send();                      
+		}
+	});
 	 $('addURL').addEvent('reset', function(e) { $('infobox').style.display = 'none'; });
 }
 
