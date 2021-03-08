@@ -207,7 +207,7 @@ function refreshTracklist(action,target) {
     			i++;
     			if ((!track.Artist) && (!track.Title)) { track = buildTag(track); }
     			tbl +="<tr id=\""+encodeURIComponent(track.file)+"\" class='"+rclass+"' " +
-    					" ondblclick='controllRemote(\"addSong\",this.id,true,\"playlist\");' "+ IEsucks+" >";
+    					" ondblclick='controllRemote(\"addSong\",decodeURIComponent(this.id),true,\"playlist\");' "+ IEsucks+" >";
     			trcolumns.each(function(item){  	 
     				if (track[item]) {
     					tbl += "<td>"+ ((item=="Time") ? convertTime(track[item]) : track[item] ) +"</td>";
@@ -512,9 +512,7 @@ function handleKeys(evt,key){
 function controllRemote(action,value,ping,controller) {
 	clearTimeout(pingTimer); // stop timer	
 	clearTimeout(infoTimer);
-	var url = "include/controller-"+controller+".php?action="+action+"&value=";
-	// addSong is always called with row id which is already url encoded
-	url += (action == 'addSong') ? value : encodeURIComponent(value);
+	var url = "include/controller-"+controller+".php?action="+action+"&value="+encodeURIComponent(value);
 	var request = new Json.Remote(url, {
 		method: 'get',
 		async: false,
@@ -559,12 +557,12 @@ function addSelected() {
    	$$('#trackTable tbody tr').each(function(row) {
    		if (row.className.search('marked')!=-1) {
    		   i++;
-   		   controllRemote('addSong',row.id,false,'playlist');
+   		   controllRemote('addSong',decodeURIComponent(row.id),false,'playlist');
    		   $(row).removeClass('marked');
   		}
    	});
    	/* Take the current row if nothing selected */
-   	if (i==0) { controllRemote('addSong',$(current_row).id,false,'playlist'); }
+   	if (i==0) { controllRemote('addSong',decodeURIComponent($(current_row).id),false,'playlist'); }
   	pingMPD(); // Start Timer
    	return i;
 }
