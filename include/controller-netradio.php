@@ -88,7 +88,7 @@ function getPlaylist($playlist,$tag="") {
       foreach ($lines as $line) {
       	 $line = strtolower(trim($line));
 	  	  // check if stream url
-   	  	 if (($line!="") && ($tag==(substr($line,0,strlen($tag)))) && ($line{0}!="#")) return $line;
+   	  	 if (($line!="") && ($tag==(substr($line,0,strlen($tag)))) && ($line[0]!="#")) return $line;
      	}
      }	
      return false;
