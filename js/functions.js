@@ -208,12 +208,13 @@ function refreshTracklist(action,target) {
     			if ((!track.Artist) && (!track.Title)) { track = buildTag(track); }
     			tbl +="<tr id=\""+encodeURIComponent(track.file)+"\" class='"+rclass+"' " +
     					" ondblclick='controllRemote(\"addSong\",decodeURIComponent(this.id),true,\"playlist\");' "+ IEsucks+" >";
-    			trcolumns.each(function(item){  	 
-    				if (track[item]) {
-    					tbl += "<td>"+ ((item=="Time") ? convertTime(track[item]) : track[item] ) +"</td>";
-    				} else {
-    					tbl += "<td></td>";
-    				}	    		
+    			trcolumns.each(function(item){
+					var cellValue = $type(track[item]) == 'array' ? track[item].join(', ') : track[item];
+					if (cellValue) {
+						tbl += "<td>"+ ((item=="Time") ? convertTime(cellValue) : cellValue ) +"</td>";
+					} else {
+						tbl += "<td></td>";
+					}
 			    });	
     			tbl +="</tr>";
 			  });
@@ -308,13 +309,14 @@ function makePlaylistRow(track,rclass) {
    	row ="<table><tr id='pl"+track.Pos+"' plid='"+track.Id+"' class='"+rclass+"' " +
 					" ondblclick='controllRemote(\"play\",this.attributes[\"plid\"].nodeValue,true,\"playback\");' "+ IEsucks+" >";
     plcolumns.each(function(item){   
-    	if (track[item]) {    	 	 
+		var cellValue = $type(track[item]) == 'array' ? track[item].join(', ') : track[item];
+    	if (cellValue) {    	 	 
     		if (item=="Time") {
-    	   		row +="<td>"+convertTime(track[item])+"</td>";    	   		
+    	   		row +="<td>"+convertTime(cellValue)+"</td>";    	   		
     		} else if (item=="Pos") {
-   		   		row +="<td style='padding-left:15px;'>"+track[item]+"</td>";    		
+   		   		row +="<td style='padding-left:15px;'>"+cellValue+"</td>";    		
     		} else {   			
-    			row +="<td>"+track[item]+"</td>";    		
+    			row +="<td>"+cellValue+"</td>";    		
     		}
     	} else {
    			row += "<td></td>";

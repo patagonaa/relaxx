@@ -302,7 +302,14 @@ class Net_MPD_Common
                         if ($key == 'file') {
                             $count['file']++;
                         }
-                        $output['file'][$count['file']][$key] = $value;
+                        // if not in list, add as string, else create array with all entries
+                        if (!isset($output['file'][$count['file']][$key])) {
+                            $output['file'][$count['file']][$key] = $value;
+                        } else if (is_array($output['file'][$count['file']][$key])) {
+                            $output['file'][$count['file']][$key][] = $value;
+                        } else {
+                            $output['file'][$count['file']][$key] = array($output['file'][$count['file']][$key], $value);
+                        }
                         break;
 
                     //The next section is for a 'stats' call
