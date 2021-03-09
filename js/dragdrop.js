@@ -87,7 +87,7 @@ dragDrop = new Class({
 		    		 addSelected();
 					 break;
 				case "treemenu":
-					controllRemote('addSong',this.track.title,true,'playlist');
+					controllRemote('addSong',decodeURIComponent(this.track.title),true,'playlist');
 					break;
 				default:
 				 if ($(current_row)) {
