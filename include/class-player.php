@@ -42,7 +42,7 @@ class player{
       	 // select dirs with subdirs with a class tag
        	 $class = (isset($subdata['directory'])) ? "" :  "empty";
        	 $dval = $entry;
-         echo "<li class='".$class."' onclick='getDir(event);' title='".urlencode($entry)."'>".htmlspecialchars($dval)."</li>";
+         echo "<li class='".$class."' onclick='getDir(event);' title='".rawurlencode($entry)."'>".htmlspecialchars($dval)."</li>";
       }
       echo "</ul>";
    }

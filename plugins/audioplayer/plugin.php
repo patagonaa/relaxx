@@ -30,7 +30,7 @@ class audioplayer {
  			// hack for radio streams 			 
 			$mpath = (substr($filename,4,3)=="://") ? '' : $path."/music/";
  			$fvars  = '<param name="flashvars" value="animation=no&bg=5C5C5C&leftbg=ffffff&rightbg=ffffff&transparentpagebg=yes&soundFile='
-				.urlencode($mpath.$filename).'&playerID=audioflash"/>'; 		
+				.rawurlencode($mpath.$filename).'&playerID=audioflash"/>'; 		
 // write the audioplayer flash		
 ?> 		
 	<div style="margin-bottom: 5px;display: block;"><?php echo $title ?></div>

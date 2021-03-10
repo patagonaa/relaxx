@@ -41,7 +41,7 @@
 		      	// select dirs with subdirswith a class tag 
 		      	$class = (isset($subdata['directory'])) ? "" :  "empty";        	
        	 		$dval = substr($entry,strrpos($entry,'/')+1);
-		      	echo "<li class='".$class."' onclick='getDir(event);' title='".urlencode($entry)."'>".htmlspecialchars($dval)."</li>";
+		      	echo "<li class='".$class."' onclick='getDir(event);' title='".rawurlencode($entry)."'>".htmlspecialchars($dval)."</li>";
 		      }	
 		 	}
          	die();
