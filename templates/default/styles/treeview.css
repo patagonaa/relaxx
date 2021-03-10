@@ -30,7 +30,7 @@
    list-style-position: outside;
    cursor: hand !important;
    cursor: pointer !important;
-   white-space: ignore;
+   white-space: nowrap;
 }
 
 .treelist ul li.open{ 

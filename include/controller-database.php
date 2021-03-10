@@ -40,9 +40,7 @@
 		      	$subdata = $MPD->getInfo($entry); 
 		      	// select dirs with subdirswith a class tag 
 		      	$class = (isset($subdata['directory'])) ? "" :  "empty";        	
-       	 		$dval = str_replace(" ","&nbsp;",substr($entry,strrpos($entry,'/')+1));       	
-       	 		$dval = strtr($dval,"-)(",".][");
-		      	
+       	 		$dval = str_replace(" ","&nbsp;",substr($entry,strrpos($entry,'/')+1));
 		      	echo "<li class='".$class."' onclick='getDir(event);' title='".urlencode($entry)."'>".$dval."</li>";
 		      }	
 		 	}

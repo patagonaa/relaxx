@@ -28,10 +28,10 @@ osKeyboard = new Class({
       line=new Element('div');
       // lines 1 .. 4 .... innerHTML is much faster
       for (var i = 0; i < 10; ++i) { line.innerHTML += '<button style="width:20px;padding:1px" value=".">.</button>'; }
-      for (var n = 0; n < 4; ++n) { this.cont.innerHTML += '<div style="display:block; white-space:ignore;">'+line.innerHTML+"</div>"; }
+      for (var n = 0; n < 4; ++n) { this.cont.innerHTML += '<div style="display:block; white-space:nowrap;">'+line.innerHTML+"</div>"; }
 
       // last Line
-      this.cont.innerHTML += '<div style="display:block; white-space:ignore;">'
+      this.cont.innerHTML += '<div style="display:block; white-space:nowrap;">'
                        +'<button id="shiftKey" class="" style="width:20px;padding:1px" value="&#8593;">&uarr;</button>'
                        +'<button value=" " style="width:130px;padding:1px">space</button>'
                        +'<button value="enter" style="width:42px;padding:1px">enter</button>'
