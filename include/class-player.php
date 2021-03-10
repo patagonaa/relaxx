@@ -41,8 +41,8 @@ class player{
       	 $subdata = $this->mdb->getInfo($entry);
       	 // select dirs with subdirs with a class tag
        	 $class = (isset($subdata['directory'])) ? "" :  "empty";
-       	 $dval = str_replace(" ","&nbsp;",$entry);
-         echo "<li class='".$class."' onclick='getDir(event);' title='".urlencode($entry)."'>".$dval."</li>";
+       	 $dval = $entry;
+         echo "<li class='".$class."' onclick='getDir(event);' title='".urlencode($entry)."'>".htmlspecialchars($dval)."</li>";
       }
       echo "</ul>";
    }

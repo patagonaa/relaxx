@@ -209,12 +209,14 @@ function refreshTracklist(action,target) {
     			tbl +="<tr id=\""+encodeURIComponent(track.file)+"\" class='"+rclass+"' " +
     					" ondblclick='controllRemote(\"addSong\",decodeURIComponent(this.id),true,\"playlist\");' "+ IEsucks+" >";
     			trcolumns.each(function(item){
-					var cellValue = $type(track[item]) == 'array' ? track[item].join(', ') : track[item];
-					if (cellValue) {
-						tbl += "<td>"+ ((item=="Time") ? convertTime(cellValue) : cellValue ) +"</td>";
-					} else {
-						tbl += "<td></td>";
-					}
+					var cellValue = track[item];
+					cellValue = $type(cellValue) == 'array' ? cellValue.join(', ') : cellValue;
+					cellValue = item == "Time" ? convertTime(cellValue) : cellValue;
+
+					var cell = document.createElement('td');
+					if(cellValue)
+						cell.innerText = cellValue;
+					tbl += cell.outerHTML;
 			    });	
     			tbl +="</tr>";
 			  });
@@ -309,18 +311,17 @@ function makePlaylistRow(track,rclass) {
    	row ="<table><tr id='pl"+track.Pos+"' plid='"+track.Id+"' class='"+rclass+"' " +
 					" ondblclick='controllRemote(\"play\",this.attributes[\"plid\"].nodeValue,true,\"playback\");' "+ IEsucks+" >";
     plcolumns.each(function(item){   
-		var cellValue = $type(track[item]) == 'array' ? track[item].join(', ') : track[item];
-    	if (cellValue) {    	 	 
-    		if (item=="Time") {
-    	   		row +="<td>"+convertTime(cellValue)+"</td>";    	   		
-    		} else if (item=="Pos") {
-   		   		row +="<td style='padding-left:15px;'>"+cellValue+"</td>";    		
-    		} else {   			
-    			row +="<td>"+cellValue+"</td>";    		
-    		}
-    	} else {
-   			row += "<td></td>";
-    	}	
+		var cellValue = track[item];
+		cellValue = $type(cellValue) == 'array' ? cellValue.join(', ') : cellValue;
+		cellValue = item == "Time" ? convertTime(cellValue) : cellValue;
+
+		var cell = document.createElement('td');
+		if(cellValue)
+			cell.innerText = cellValue;
+		if(item == "Pos")
+			cell.setAttribute('style', 'padding-left:15px;');
+
+		row += cell.outerHTML;
     });	
    	newRow.innerHTML = row+"</tr></table>";
    	return newRow.getElementsByTagName('tr')[0];
